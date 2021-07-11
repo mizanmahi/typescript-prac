@@ -1,0 +1,13 @@
+{
+  "name": "typescript-max",
+  "version": "1.0.0",
+  "main": "app.js",
+  "author": "mizanmahi <mizanmahi24@gmail.com>",
+  "license": "MIT",
+  "scripts": {
+    "start": "lite-server"
+  },
+  "devDependencies": {
+    "lite-server": "^2.6.1"
+  }
+}
