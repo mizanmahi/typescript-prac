@@ -17,3 +17,13 @@ class Greet {
 }
 const greet = new Greet("Hello there!");
 greet.greet();
+class Book {
+    constructor(book, pages) {
+        this.book = book;
+        this.pages = pages;
+    }
+}
+let addFn;
+addFn = (x, y) => {
+    return x + y;
+};
