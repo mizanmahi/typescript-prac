@@ -1,35 +1,19 @@
 class Department {
-   name: string;
+   //    public name: string;
+   //    private id: number;
+   //    constructor(n: string, id: number) {
+   //       this.name = n;
+   //       this.id = id;
+   //    }
 
-   private employees: string[] = [];
-
-   constructor(n: string) {
-      this.name = n;
-   }
+   // this is the same as above initializaton of property, private and public modifier are mendatory here, this will automatically crate the properties named nmae and id
+   constructor(public name: string, private id: number) {} // shrthand initialization
 
    // here we can pass "this" as a parameter in typescipt, this will ensure that this method always refer to the instance of this particular class
    info(this: Department) {
-      console.log("Department: " + this.name);
-   }
-
-   addemployee(name: string) {
-      this.employees.push(name);
-   }
-
-   printEmployeeInfo() {
-      console.log(`Total number of employee is ${this.employees.length}`);
-      console.log(this.employees);
+      console.log("Department: " + this.name + " and the id is: " + this.id);
    }
 }
 
-const dept = new Department("CSE");
-dept.info(); // Department: CSE
-
-// const deptCopy = { info: dept.info, name: 'Accounting' };
-// deptCopy.info(); // Department: undefined
-
-dept.addemployee("Mizan"); // can do this
-dept.addemployee("Kamal"); // can do this
-//dept.employees[2] = "showkhin"; // can't do this, cuz this is a private property of Department class
-
-dept.printEmployeeInfo();
+const dept = new Department("CSE", 19320002);
+dept.info()
