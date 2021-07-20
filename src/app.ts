@@ -71,3 +71,10 @@ let addFn: addfn;
 addFn = (x: number, y: number) => {
    return x + y;
 };
+
+
+//--------- optional parameter and properties ----------------------
+interface others {
+   animal?: string; // optional
+   people: string;
+}
