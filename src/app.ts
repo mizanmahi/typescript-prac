@@ -15,5 +15,20 @@ class Department {
    }
 }
 
+class ItDept extends Department {
+   // admin is here automatically gets initialized and it is a property of this specific class
+   constructor(id: number, public admin: string[]) {
+      super("IT", id); // passing the id to the parent class or base class
+   }
+
+   printAdmin() {
+      console.log(this.admin);
+   }
+}
+
 const dept = new Department("CSE", 19320002);
-dept.info()
+
+const It = new ItDept(19520005, ["Mizan", "kamal"]);
+
+console.log(dept);
+console.log(It);
