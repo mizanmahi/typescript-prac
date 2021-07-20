@@ -7,7 +7,7 @@ class Department {
    //    }
 
    // this is the same as above initializaton of property, private and public modifier are mendatory here, this will automatically crate the properties named nmae and id
-   constructor(public name: string, private id: number) {} // shrthand initialization
+   constructor(public readonly name: string, private id: number) {} // shrthand initialization
 
    // here we can pass "this" as a parameter in typescipt, this will ensure that this method always refer to the instance of this particular class
    info(this: Department) {
