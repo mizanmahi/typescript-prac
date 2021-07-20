@@ -1,27 +1,45 @@
-abstract class Department {
-   constructor(
-      public readonly name: string,
-      private id: number,
-      protected employees: string[]
-   ) {} // shrthand initialization
+// interfaces
+// usually describe how an onject should look like
 
-   abstract describe(): void;
-  
+// declaration
+interface Animal {
+   // this could be used as a structure of an aobject
+   name: string;
+   color: string;
+   eatable: boolean;
+   age: number;
+   info(): void;
 }
 
-class ItDept extends Department {
-   constructor(id: number, public admin: string[]) {
-      super("IT", id, []);
+let cow: Animal;
+
+cow = {
+   name: "Bagha",
+   color: "red",
+   eatable: true,
+   age: 5,
+   info: () => {},
+};
+
+
+
+interface Greetable {
+   name: string;
+   greet(): void;
+}
+
+class Greet implements Greetable { // Greet must implement the Greeadable interface
+   name: string;
+
+   constructor(n: string) {
+      this.name = n;
    }
 
-   // all class extended by the Department must implement this method
-   describe(){
-      console.log("Department name is: " + this.name);
+   greet() {
+      console.log("This is implemented on greetable interfaces");
    }
 }
 
-//const dept = new Department("Cse", 2569, []); //Cannot create an instance of an abstract class
+const greet = new Greet("Hello there!")
 
-const it = new ItDept(2365, [])
-it.describe()
-
+greet.greet()

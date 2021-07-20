@@ -1,19 +1,19 @@
 "use strict";
-class Department {
-    constructor(name, id, employees) {
-        this.name = name;
-        this.id = id;
-        this.employees = employees;
+let cow;
+cow = {
+    name: "Bagha",
+    color: "red",
+    eatable: true,
+    age: 5,
+    info: () => { },
+};
+class Greet {
+    constructor(n) {
+        this.name = n;
+    }
+    greet() {
+        console.log("This is implemented on greetable interfaces");
     }
 }
-class ItDept extends Department {
-    constructor(id, admin) {
-        super("IT", id, []);
-        this.admin = admin;
-    }
-    describe() {
-        console.log("Department name is: " + this.name);
-    }
-}
-const it = new ItDept(2365, []);
-it.describe();
+const greet = new Greet("Hello there!");
+greet.greet();
