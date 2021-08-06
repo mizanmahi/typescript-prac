@@ -1,29 +1,22 @@
 "use strict";
-let cow;
-cow = {
-    name: "Bagha",
-    color: "red",
-    eatable: true,
-    age: 5,
-    info: () => { },
-};
-class Greet {
-    constructor(n) {
-        this.name = n;
-    }
-    greet() {
-        console.log("This is implemented on greetable interfaces");
-    }
+const names = ['Mizan', 'Kamal'];
+const promise = new Promise((resolve, reject) => {
+    setTimeout(() => {
+        resolve('This is done!');
+    }, 2000);
+});
+function merge(objA, objB) {
+    return Object.assign(objA, objB);
 }
-const greet = new Greet("Hello there!");
-greet.greet();
-class Book {
-    constructor(book, pages) {
-        this.book = book;
-        this.pages = pages;
-    }
+const merged = merge({ firstName: 'mizan' }, { lastName: 'mahi' });
+function countAndPrint(element) {
+    let description = 'Got no value!';
+    element.length === 1
+        ? (description = `Got ${element.length} value`)
+        : (description = `Got ${element.length} values`);
+    return [
+        element,
+        description
+    ];
 }
-let addFn;
-addFn = (x, y) => {
-    return x + y;
-};
+console.log(countAndPrint("Mizan Mahi"));
