@@ -28,7 +28,7 @@ const merged = merge({ firstName: 'mizan' }, { lastName: 'mahi' });
 // console.log(merged.firstName);
 
 interface lengthy {
-    length: number;
+  length: number;
 }
 
 function countAndPrint<T extends lengthy>(element: T): [T, string] {
@@ -38,11 +38,25 @@ function countAndPrint<T extends lengthy>(element: T): [T, string] {
     ? (description = `Got ${element.length} value`)
     : (description = `Got ${element.length} values`);
 
-    return [
-        element,
-        description
-    ]
+  return [element, description];
 }
 
+console.log(countAndPrint('Mizan Mahi')); // returning a tuple where first element is generic type and second element is of a string type
 
-console.log(countAndPrint("Mizan Mahi")); // returning a tuple where first element is generic type and second element is of a string type
+// the keyof constraints
+function extractAndConvert<T extends object, U extends keyof T>(
+  obj: T,
+  key: U
+) {
+  return obj[key];
+}
+
+extractAndConvert({ name: 'mizan' }, 'name');
+
+// generic classes
+const arrOfObj = [{ name: 'mizan' }, { age: 25 }];
+console.log(arrOfObj.indexOf({ name: 'mizan' })); // -1
+
+// generic utility types
+// partial types
+// readonly

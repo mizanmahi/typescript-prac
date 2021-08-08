@@ -14,9 +14,12 @@ function countAndPrint(element) {
     element.length === 1
         ? (description = `Got ${element.length} value`)
         : (description = `Got ${element.length} values`);
-    return [
-        element,
-        description
-    ];
+    return [element, description];
 }
-console.log(countAndPrint("Mizan Mahi"));
+console.log(countAndPrint('Mizan Mahi'));
+function extractAndConvert(obj, key) {
+    return obj[key];
+}
+extractAndConvert({ name: 'mizan' }, 'name');
+const arrOfObj = [{ name: 'mizan' }, { age: 25 }];
+console.log(arrOfObj.indexOf({ name: 'mizan' }));
