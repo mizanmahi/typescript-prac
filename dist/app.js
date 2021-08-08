@@ -1,25 +1,37 @@
 "use strict";
-const names = ['Mizan', 'Kamal'];
-const promise = new Promise((resolve, reject) => {
-    setTimeout(() => {
-        resolve('This is done!');
-    }, 2000);
-});
-function merge(objA, objB) {
-    return Object.assign(objA, objB);
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (this && this.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+function Logger(constructor) {
+    console.log('Decoratot ran...');
+    console.log(constructor);
 }
-const merged = merge({ firstName: 'mizan' }, { lastName: 'mahi' });
-function countAndPrint(element) {
-    let description = 'Got no value!';
-    element.length === 1
-        ? (description = `Got ${element.length} value`)
-        : (description = `Got ${element.length} values`);
-    return [element, description];
+function LogMethod(target, name, descriptor) {
+    descriptor.enumerable = true;
+    console.log(target);
+    console.log(name);
+    console.log(descriptor);
 }
-console.log(countAndPrint('Mizan Mahi'));
-function extractAndConvert(obj, key) {
-    return obj[key];
+class Person {
+    constructor() {
+        this.name = 'Mizan';
+        console.log('Constructor ran...');
+    }
+    greet(greet) {
+        console.log(`${greet} ${this.name}`);
+        return 'string';
+    }
 }
-extractAndConvert({ name: 'mizan' }, 'name');
-const arrOfObj = [{ name: 'mizan' }, { age: 25 }];
-console.log(arrOfObj.indexOf({ name: 'mizan' }));
+__decorate([
+    LogMethod,
+    __metadata("design:type", Function),
+    __metadata("design:paramtypes", [String]),
+    __metadata("design:returntype", void 0)
+], Person.prototype, "greet", null);
+const mizan = new Person();

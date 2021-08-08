@@ -1,62 +1,38 @@
-const names: Array<string> = ['Mizan', 'Kamal']; // Array<string> this is generic type for better typescript type support, basically giving ts some informatio about the data it returns or store in this case
+// Decorators
 
-const promise: Promise<string> = new Promise((resolve, reject) => {
-  setTimeout(() => {
-    resolve('This is done!');
-  }, 2000);
-});
-
-// promise.then(str => console.log(str));
-
-// custom generics
-/* function merge<T, U>(objA: T, objB: U){
-    return Object.assign(objA, objB);
+// decorator for the class
+function Logger(constructor: Function){
+  console.log('Decoratot ran...');
+  console.log(constructor);
 }
 
-const merged = merge({firstName: 'mizan'}, {lastName: 'mahi'});
-
-console.log(merged.firstName);  */
-
-// custom generics with constraint
-function merge<T extends object, U extends object>(objA: T, objB: U) {
-  return Object.assign(objA, objB);
+// decorator for the method greet
+function LogMethod(target: any, name: string, descriptor: PropertyDescriptor){
+ descriptor.enumerable = true;
+ console.log(target);
+ console.log(name); // greet, the name of method
+ console.log(descriptor); // {value: [Function: greet],writable: true,enumerable: true,configurable: true}
 }
 
-// const merged = merge({firstName: 'mizan'}, 3); // now this will give an error second argument also must have to be an object
-const merged = merge({ firstName: 'mizan' }, { lastName: 'mahi' });
+// @Logger
+class Person {
+  name = 'Mizan';
 
-// console.log(merged.firstName);
+  constructor(){
+    console.log('Constructor ran...');
+    
+  }
 
-interface lengthy {
-  length: number;
+  @LogMethod // decorator to make this method enumerable 
+  greet(greet: string){
+    console.log(`${greet} ${this.name}`);
+    return 'string'
+  }
 }
 
-function countAndPrint<T extends lengthy>(element: T): [T, string] {
-  let description = 'Got no value!';
+const mizan = new Person();
+// console.log(mizan);
 
-  element.length === 1
-    ? (description = `Got ${element.length} value`)
-    : (description = `Got ${element.length} values`);
-
-  return [element, description];
-}
-
-console.log(countAndPrint('Mizan Mahi')); // returning a tuple where first element is generic type and second element is of a string type
-
-// the keyof constraints
-function extractAndConvert<T extends object, U extends keyof T>(
-  obj: T,
-  key: U
-) {
-  return obj[key];
-}
-
-extractAndConvert({ name: 'mizan' }, 'name');
-
-// generic classes
-const arrOfObj = [{ name: 'mizan' }, { age: 25 }];
-console.log(arrOfObj.indexOf({ name: 'mizan' })); // -1
-
-// generic utility types
-// partial types
-// readonly
+/* for(const key in mizan){
+  console.log(key); // name and greet will be printed as we apply the LogMethod decorator in the greet method
+} */
